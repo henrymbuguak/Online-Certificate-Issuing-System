@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     <a href="{{ route('add.course') }}">Add Course</a><br>
                     <a href="{{ route('offered.course') }}">View the Course Offered</a><br>
-                    <a href="">Student Applied For Certificate</a>
+                    <a href="{{ route('student.certificate') }}">Student Applied For Certificate</a>
                 </div>
             </div>
         </div>

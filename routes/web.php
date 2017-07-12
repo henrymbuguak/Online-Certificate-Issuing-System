@@ -24,4 +24,6 @@ Route::prefix('admin')->group(function (){
     Route::get('/course/add', 'HomeController@addCourse')->name('add.course');
     Route::post('/course/add', 'HomeController@adminAddCourse')->name('add.course');
     Route::get('/course/available', 'HomeController@getAvailableCourse')->name('offered.course');
+    Route::get('/student/applications', 'HomeController@getStudent')->name('student.certificate');
+    Route::get('/student/certificate', 'HomeController@getStudent')->name('student.pdf');
 });

@@ -51,4 +51,16 @@ class HomeController extends Controller
         $courses = DB::table('courses')->get();
         return view('admin.offered',['courses'=>$courses]);
     }
+
+    public function getStudent() {
+        $student = DB::table('students')
+            ->join('courses','students.course_id', '=' , 'courses.id')
+            ->get();
+        //dd($student);
+        return view('admin.student',['student'=>$student]);
+    }
+
+    public function getCertificatePdf(){
+        return view();
+    }
 }
