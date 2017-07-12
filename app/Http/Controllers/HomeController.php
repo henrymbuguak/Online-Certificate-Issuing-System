@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('certificateApplication');
     }
 
     /**
@@ -26,6 +26,12 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function certificateApplication(){
+        $courses = DB::table('courses')->get();
+        //dd($courses);
+        return view('certificate',['courses'=>$courses]);
     }
 
     public function addCourse() {

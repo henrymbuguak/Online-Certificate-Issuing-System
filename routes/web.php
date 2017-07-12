@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@certificateApplication')->name('application');
+Route::post('/certificate/application','StudentController@getCertificateApplication')->name('certificate.application');
 
 Auth::routes();
 
