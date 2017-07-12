@@ -75,4 +75,25 @@ class HomeController extends Controller
         $pdf = PDF::loadView('admin.certificate', $data);
         return $pdf->stream('certificate.pdf');
     }
+
+    public function getStatistics() {
+        $course = DB::table('courses')->pluck('id');
+        //dd($course);
+        $student = DB::table('students')
+            ->join('courses','students.course_id', '=' , 'courses.id')
+            ->where('courses.id',$course)
+            ->count();
+        //dd($student);
+        $coursename = DB::table('students')
+            ->join('courses','students.course_id', '=' , 'courses.id')
+            ->where('courses.id',$course)
+            ->get();
+
+        $data = array(
+            'student'=>$student,
+            'coursename'=>$coursename
+        );
+        //dd($coursename);
+        return view('admin.statistics', $data);
+    }
 }
