@@ -30,7 +30,7 @@
                                 <td>{{ $stu->student_id }}</td>
                                 <td>{{ $stu->email }}</td>
                                 <td>{{ $stu->name }}</td>
-                                <td><a href="">pdf</a></td>
+                                <td><a href="{{ route('student.pdf',array($stu->id)) }}">pdf</a></td>
                             </tr>
                             @endforeach
                             </tbody>

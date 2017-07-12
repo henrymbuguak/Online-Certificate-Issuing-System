@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Student;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Course;
+use PDF;
 
 class HomeController extends Controller
 {
@@ -60,7 +62,17 @@ class HomeController extends Controller
         return view('admin.student',['student'=>$student]);
     }
 
-    public function getCertificatePdf(){
-        return view();
+    public function getCertificatePdf($id){
+        //$student_id = Student::find($id)->first();
+        $student = DB::table('students')
+            ->join('courses','students.course_id', '=' , 'courses.id')
+            ->where('students.id', $id)
+            ->get();
+        //dd($student);
+        $data = array(
+            'students'=>$student,
+        );
+        $pdf = PDF::loadView('admin.certificate', $data);
+        return $pdf->stream('certificate.pdf');
     }
 }
