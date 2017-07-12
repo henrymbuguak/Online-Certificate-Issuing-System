@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('admin')->group(function (){
+    Route::get('/course/add', 'HomeController@addCourse')->name('add.course');
+    Route::post('/course/add', 'HomeController@adminAddCourse')->name('add.course');
+});
