@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Course;
 
@@ -38,5 +39,10 @@ class HomeController extends Controller
         $availableStudenCourse->save();
 
         return redirect('/admin/course/add')->with('status','Successfully submitted, Check your email!');
+    }
+
+    public function getAvailableCourse() {
+        $courses = DB::table('courses')->get();
+        return view('admin.offered',['courses'=>$courses]);
     }
 }
