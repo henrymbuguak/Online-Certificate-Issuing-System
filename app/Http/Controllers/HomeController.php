@@ -46,7 +46,7 @@ class HomeController extends Controller
         $availableStudenCourse->name=$request->name;
         $availableStudenCourse->save();
 
-        return redirect('/admin/course/add')->with('status','Successfully submitted, Check your email!');
+        return redirect('/admin/course/add')->with('status','Successfully submitted!');
     }
 
     public function getAvailableCourse() {
